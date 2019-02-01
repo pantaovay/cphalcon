@@ -274,7 +274,7 @@ PHP_METHOD(Phalcon_Mvc_Collection_Manager, isInitialized) {
 	zephir_fetch_params(1, 1, 0, &modelName_param);
 
 	if (UNEXPECTED(Z_TYPE_P(modelName_param) != IS_STRING && Z_TYPE_P(modelName_param) != IS_NULL)) {
-		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'modelName' must be of the type string") TSRMLS_CC);
+		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'modelName' must be a string") TSRMLS_CC);
 		RETURN_MM_NULL();
 	}
 	if (EXPECTED(Z_TYPE_P(modelName_param) == IS_STRING)) {
@@ -321,7 +321,7 @@ PHP_METHOD(Phalcon_Mvc_Collection_Manager, setConnectionService) {
 	zephir_fetch_params(1, 2, 0, &model, &connectionService_param);
 
 	if (UNEXPECTED(Z_TYPE_P(connectionService_param) != IS_STRING && Z_TYPE_P(connectionService_param) != IS_NULL)) {
-		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'connectionService' must be of the type string") TSRMLS_CC);
+		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'connectionService' must be a string") TSRMLS_CC);
 		RETURN_MM_NULL();
 	}
 	if (EXPECTED(Z_TYPE_P(connectionService_param) == IS_STRING)) {
@@ -508,7 +508,7 @@ PHP_METHOD(Phalcon_Mvc_Collection_Manager, notifyEvent) {
 	zephir_fetch_params(1, 2, 0, &eventName_param, &model);
 
 	if (UNEXPECTED(Z_TYPE_P(eventName_param) != IS_STRING && Z_TYPE_P(eventName_param) != IS_NULL)) {
-		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'eventName' must be of the type string") TSRMLS_CC);
+		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'eventName' must be a string") TSRMLS_CC);
 		RETURN_MM_NULL();
 	}
 	if (EXPECTED(Z_TYPE_P(eventName_param) == IS_STRING)) {
@@ -599,7 +599,7 @@ PHP_METHOD(Phalcon_Mvc_Collection_Manager, missingMethod) {
 	zephir_fetch_params(1, 3, 0, &model, &eventName_param, &data);
 
 	if (UNEXPECTED(Z_TYPE_P(eventName_param) != IS_STRING && Z_TYPE_P(eventName_param) != IS_NULL)) {
-		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'eventName' must be of the type string") TSRMLS_CC);
+		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'eventName' must be a string") TSRMLS_CC);
 		RETURN_MM_NULL();
 	}
 	if (EXPECTED(Z_TYPE_P(eventName_param) == IS_STRING)) {

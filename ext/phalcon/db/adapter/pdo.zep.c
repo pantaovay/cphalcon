@@ -304,7 +304,7 @@ PHP_METHOD(Phalcon_Db_Adapter_Pdo, prepare) {
 	zephir_fetch_params(1, 1, 0, &sqlStatement_param);
 
 	if (UNEXPECTED(Z_TYPE_P(sqlStatement_param) != IS_STRING && Z_TYPE_P(sqlStatement_param) != IS_NULL)) {
-		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'sqlStatement' must be of the type string") TSRMLS_CC);
+		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'sqlStatement' must be a string") TSRMLS_CC);
 		RETURN_MM_NULL();
 	}
 	if (EXPECTED(Z_TYPE_P(sqlStatement_param) == IS_STRING)) {
@@ -563,7 +563,7 @@ PHP_METHOD(Phalcon_Db_Adapter_Pdo, query) {
 	zephir_fetch_params(1, 1, 2, &sqlStatement_param, &bindParams, &bindTypes);
 
 	if (UNEXPECTED(Z_TYPE_P(sqlStatement_param) != IS_STRING && Z_TYPE_P(sqlStatement_param) != IS_NULL)) {
-		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'sqlStatement' must be of the type string") TSRMLS_CC);
+		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'sqlStatement' must be a string") TSRMLS_CC);
 		RETURN_MM_NULL();
 	}
 	if (EXPECTED(Z_TYPE_P(sqlStatement_param) == IS_STRING)) {
@@ -677,7 +677,7 @@ PHP_METHOD(Phalcon_Db_Adapter_Pdo, execute) {
 	zephir_fetch_params(1, 1, 2, &sqlStatement_param, &bindParams, &bindTypes);
 
 	if (UNEXPECTED(Z_TYPE_P(sqlStatement_param) != IS_STRING && Z_TYPE_P(sqlStatement_param) != IS_NULL)) {
-		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'sqlStatement' must be of the type string") TSRMLS_CC);
+		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'sqlStatement' must be a string") TSRMLS_CC);
 		RETURN_MM_NULL();
 	}
 	if (EXPECTED(Z_TYPE_P(sqlStatement_param) == IS_STRING)) {
@@ -829,7 +829,7 @@ PHP_METHOD(Phalcon_Db_Adapter_Pdo, convertBoundParams) {
 
 	zend_long ZEPHIR_LAST_CALL_STATUS, setOrder = 0;
 	zval params;
-	zval *sql_param = NULL, *params_param = NULL, boundSql, placeHolders, bindPattern, matches, placeMatch, value, _0, _1, _2, *_3$$3, _6$$3, _4$$4, _5$$6;
+	zval *sql_param = NULL, *params_param = NULL, boundSql, placeHolders, bindPattern, matches, placeMatch, value, _0, _1, *_2$$3, _5$$3, _3$$4, _4$$6;
 	zval sql;
 	zval *this_ptr = getThis();
 
@@ -842,17 +842,16 @@ PHP_METHOD(Phalcon_Db_Adapter_Pdo, convertBoundParams) {
 	ZVAL_UNDEF(&value);
 	ZVAL_UNDEF(&_0);
 	ZVAL_UNDEF(&_1);
-	ZVAL_UNDEF(&_2);
-	ZVAL_UNDEF(&_6$$3);
-	ZVAL_UNDEF(&_4$$4);
-	ZVAL_UNDEF(&_5$$6);
+	ZVAL_UNDEF(&_5$$3);
+	ZVAL_UNDEF(&_3$$4);
+	ZVAL_UNDEF(&_4$$6);
 	ZVAL_UNDEF(&params);
 
 	ZEPHIR_MM_GROW();
 	zephir_fetch_params(1, 1, 1, &sql_param, &params_param);
 
 	if (UNEXPECTED(Z_TYPE_P(sql_param) != IS_STRING && Z_TYPE_P(sql_param) != IS_NULL)) {
-		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'sql' must be of the type string") TSRMLS_CC);
+		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'sql' must be a string") TSRMLS_CC);
 		RETURN_MM_NULL();
 	}
 	if (EXPECTED(Z_TYPE_P(sql_param) == IS_STRING)) {
@@ -877,22 +876,23 @@ PHP_METHOD(Phalcon_Db_Adapter_Pdo, convertBoundParams) {
 	ZVAL_NULL(&matches);
 	setOrder = 2;
 	ZVAL_LONG(&_0, setOrder);
-	ZEPHIR_INIT_VAR(&_1);
-	ZVAL_LONG(&_2, setOrder);
-	zephir_preg_match(&_1, &bindPattern, &sql, &matches, 1, zephir_get_intval(&_0) , 0  TSRMLS_CC);
+	ZEPHIR_MAKE_REF(&matches);
+	ZEPHIR_CALL_FUNCTION(&_1, "preg_match_all", NULL, 35, &bindPattern, &sql, &matches, &_0);
+	ZEPHIR_UNREF(&matches);
+	zephir_check_call_status();
 	if (zephir_is_true(&_1)) {
 		zephir_is_iterable(&matches, 0, "phalcon/db/adapter/pdo.zep", 531);
-		ZEND_HASH_FOREACH_VAL(Z_ARRVAL_P(&matches), _3$$3)
+		ZEND_HASH_FOREACH_VAL(Z_ARRVAL_P(&matches), _2$$3)
 		{
 			ZEPHIR_INIT_NVAR(&placeMatch);
-			ZVAL_COPY(&placeMatch, _3$$3);
+			ZVAL_COPY(&placeMatch, _2$$3);
 			ZEPHIR_OBS_NVAR(&value);
-			zephir_array_fetch_long(&_4$$4, &placeMatch, 1, PH_READONLY, "phalcon/db/adapter/pdo.zep", 518 TSRMLS_CC);
-			if (!(zephir_array_isset_fetch(&value, &params, &_4$$4, 0 TSRMLS_CC))) {
+			zephir_array_fetch_long(&_3$$4, &placeMatch, 1, PH_READONLY, "phalcon/db/adapter/pdo.zep", 518 TSRMLS_CC);
+			if (!(zephir_array_isset_fetch(&value, &params, &_3$$4, 0 TSRMLS_CC))) {
 				if (zephir_array_isset_long(&placeMatch, 2)) {
 					ZEPHIR_OBS_NVAR(&value);
-					zephir_array_fetch_long(&_5$$6, &placeMatch, 2, PH_READONLY, "phalcon/db/adapter/pdo.zep", 520 TSRMLS_CC);
-					if (!(zephir_array_isset_fetch(&value, &params, &_5$$6, 0 TSRMLS_CC))) {
+					zephir_array_fetch_long(&_4$$6, &placeMatch, 2, PH_READONLY, "phalcon/db/adapter/pdo.zep", 520 TSRMLS_CC);
+					if (!(zephir_array_isset_fetch(&value, &params, &_4$$6, 0 TSRMLS_CC))) {
 						ZEPHIR_THROW_EXCEPTION_DEBUG_STR(phalcon_db_exception_ce, "Matched parameter wasn't found in parameters list", "phalcon/db/adapter/pdo.zep", 521);
 						return;
 					}
@@ -904,9 +904,9 @@ PHP_METHOD(Phalcon_Db_Adapter_Pdo, convertBoundParams) {
 			zephir_array_append(&placeHolders, &value, PH_SEPARATE, "phalcon/db/adapter/pdo.zep", 528);
 		} ZEND_HASH_FOREACH_END();
 		ZEPHIR_INIT_NVAR(&placeMatch);
-		ZEPHIR_INIT_VAR(&_6$$3);
-		ZVAL_STRING(&_6$$3, "?");
-		ZEPHIR_CALL_FUNCTION(&boundSql, "preg_replace", NULL, 35, &bindPattern, &_6$$3, &sql);
+		ZEPHIR_INIT_VAR(&_5$$3);
+		ZVAL_STRING(&_5$$3, "?");
+		ZEPHIR_CALL_FUNCTION(&boundSql, "preg_replace", NULL, 36, &bindPattern, &_5$$3, &sql);
 		zephir_check_call_status();
 	} else {
 		ZEPHIR_CPY_WRT(&boundSql, &sql);

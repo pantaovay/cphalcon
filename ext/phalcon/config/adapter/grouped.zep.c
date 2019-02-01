@@ -110,7 +110,7 @@ PHP_METHOD(Phalcon_Config_Adapter_Grouped, __construct) {
 		ZVAL_STRING(&defaultAdapter, "php");
 	} else {
 	if (UNEXPECTED(Z_TYPE_P(defaultAdapter_param) != IS_STRING && Z_TYPE_P(defaultAdapter_param) != IS_NULL)) {
-		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'defaultAdapter' must be of the type string") TSRMLS_CC);
+		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'defaultAdapter' must be a string") TSRMLS_CC);
 		RETURN_MM_NULL();
 	}
 	if (EXPECTED(Z_TYPE_P(defaultAdapter_param) == IS_STRING)) {

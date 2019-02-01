@@ -104,7 +104,7 @@ PHP_METHOD(Phalcon_Validation_Validator_Callback, validate) {
 	zephir_fetch_params(1, 2, 0, &validation, &field_param);
 
 	if (UNEXPECTED(Z_TYPE_P(field_param) != IS_STRING && Z_TYPE_P(field_param) != IS_NULL)) {
-		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'field' must be of the type string") TSRMLS_CC);
+		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'field' must be a string") TSRMLS_CC);
 		RETURN_MM_NULL();
 	}
 	if (EXPECTED(Z_TYPE_P(field_param) == IS_STRING)) {
@@ -126,7 +126,7 @@ PHP_METHOD(Phalcon_Validation_Validator_Callback, validate) {
 			ZEPHIR_CALL_METHOD(&data, validation, "getdata", NULL, 0);
 			zephir_check_call_status();
 		}
-		ZEPHIR_CALL_FUNCTION(&returnedValue, "call_user_func", NULL, 271, &callback, &data);
+		ZEPHIR_CALL_FUNCTION(&returnedValue, "call_user_func", NULL, 272, &callback, &data);
 		zephir_check_call_status();
 		_1$$3 = Z_TYPE_P(&returnedValue) == IS_OBJECT;
 		if (_1$$3) {
@@ -151,7 +151,7 @@ PHP_METHOD(Phalcon_Validation_Validator_Callback, validate) {
 				zephir_check_call_status();
 				ZEPHIR_INIT_VAR(&_4$$6);
 				ZVAL_STRING(&_4$$6, "Callback");
-				ZEPHIR_CALL_METHOD(NULL, &_2$$6, "__construct", NULL, 424, &_3$$6, &field, &_4$$6, &code);
+				ZEPHIR_CALL_METHOD(NULL, &_2$$6, "__construct", NULL, 425, &_3$$6, &field, &_4$$6, &code);
 				zephir_check_call_status();
 				ZEPHIR_CALL_METHOD(NULL, validation, "appendmessage", NULL, 0, &_2$$6);
 				zephir_check_call_status();

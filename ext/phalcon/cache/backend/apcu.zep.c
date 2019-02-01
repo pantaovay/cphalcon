@@ -324,7 +324,7 @@ PHP_METHOD(Phalcon_Cache_Backend_Apcu, delete) {
 	zephir_fetch_params(1, 1, 0, &keyName_param);
 
 	if (UNEXPECTED(Z_TYPE_P(keyName_param) != IS_STRING && Z_TYPE_P(keyName_param) != IS_NULL)) {
-		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'keyName' must be of the type string") TSRMLS_CC);
+		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'keyName' must be a string") TSRMLS_CC);
 		RETURN_MM_NULL();
 	}
 	if (EXPECTED(Z_TYPE_P(keyName_param) == IS_STRING)) {

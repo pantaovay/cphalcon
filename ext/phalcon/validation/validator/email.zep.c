@@ -91,7 +91,7 @@ PHP_METHOD(Phalcon_Validation_Validator_Email, validate) {
 	zephir_fetch_params(1, 2, 0, &validation, &field_param);
 
 	if (UNEXPECTED(Z_TYPE_P(field_param) != IS_STRING && Z_TYPE_P(field_param) != IS_NULL)) {
-		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'field' must be of the type string") TSRMLS_CC);
+		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'field' must be a string") TSRMLS_CC);
 		RETURN_MM_NULL();
 	}
 	if (EXPECTED(Z_TYPE_P(field_param) == IS_STRING)) {
@@ -105,7 +105,7 @@ PHP_METHOD(Phalcon_Validation_Validator_Email, validate) {
 	ZEPHIR_CALL_METHOD(&value, validation, "getvalue", NULL, 0, &field);
 	zephir_check_call_status();
 	ZVAL_LONG(&_0, 274);
-	ZEPHIR_CALL_FUNCTION(&_1, "filter_var", NULL, 188, &value, &_0);
+	ZEPHIR_CALL_FUNCTION(&_1, "filter_var", NULL, 189, &value, &_0);
 	zephir_check_call_status();
 	if (!(zephir_is_true(&_1))) {
 		ZEPHIR_CALL_METHOD(&label, this_ptr, "preparelabel", NULL, 0, validation, &field);
@@ -125,7 +125,7 @@ PHP_METHOD(Phalcon_Validation_Validator_Email, validate) {
 		zephir_check_call_status();
 		ZEPHIR_INIT_VAR(&_4$$3);
 		ZVAL_STRING(&_4$$3, "Email");
-		ZEPHIR_CALL_METHOD(NULL, &_2$$3, "__construct", NULL, 424, &_3$$3, &field, &_4$$3, &code);
+		ZEPHIR_CALL_METHOD(NULL, &_2$$3, "__construct", NULL, 425, &_3$$3, &field, &_4$$3, &code);
 		zephir_check_call_status();
 		ZEPHIR_CALL_METHOD(NULL, validation, "appendmessage", NULL, 0, &_2$$3);
 		zephir_check_call_status();

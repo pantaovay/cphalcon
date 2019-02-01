@@ -21,7 +21,6 @@
 #include "kernel/fcall.h"
 #include "kernel/memory.h"
 
-
 #include "phalcon/mvc/model/orm.h"
 
 zend_class_entry *phalcon_di_injectionawareinterface_ce;
@@ -848,14 +847,12 @@ static PHP_MINIT_FUNCTION(phalcon)
 	ZEPHIR_INIT(phalcon_0__closure);
 	ZEPHIR_INIT(phalcon_1__closure);
 	ZEPHIR_INIT(phalcon_2__closure);
-	
 	return SUCCESS;
 }
 
 #ifndef ZEPHIR_RELEASE
 static PHP_MSHUTDOWN_FUNCTION(phalcon)
 {
-	
 	zephir_deinitialize_memory(TSRMLS_C);
 	UNREGISTER_INI_ENTRIES();
 	return SUCCESS;
@@ -884,7 +881,7 @@ static void php_zephir_init_globals(zend_phalcon_globals *phalcon_globals TSRMLS
 	/* Static cache */
 	memset(phalcon_globals->scache, '\0', sizeof(zephir_fcall_cache_entry*) * ZEPHIR_MAX_CACHE_SLOTS);
 
-	
+
 
 	phalcon_globals->orm.parser_cache = NULL;
 	phalcon_globals->orm.ast_cache = NULL;
@@ -903,7 +900,6 @@ static void php_zephir_init_globals(zend_phalcon_globals *phalcon_globals TSRMLS
 
 
 
-	
 }
 
 /**
@@ -911,11 +907,12 @@ static void php_zephir_init_globals(zend_phalcon_globals *phalcon_globals TSRMLS
  */
 static void php_zephir_init_module_globals(zend_phalcon_globals *phalcon_globals TSRMLS_DC)
 {
-	
+
 }
 
 static PHP_RINIT_FUNCTION(phalcon)
 {
+
 	zend_phalcon_globals *phalcon_globals_ptr;
 #ifdef ZTS
 	tsrm_ls = ts_resource(0);
@@ -925,7 +922,7 @@ static PHP_RINIT_FUNCTION(phalcon)
 	php_zephir_init_globals(phalcon_globals_ptr TSRMLS_CC);
 	zephir_initialize_memory(phalcon_globals_ptr TSRMLS_CC);
 
-	
+
 	return SUCCESS;
 }
 
@@ -935,8 +932,6 @@ static PHP_RSHUTDOWN_FUNCTION(phalcon)
 	zephir_deinitialize_memory(TSRMLS_C);
 	return SUCCESS;
 }
-
-
 
 static PHP_MINFO_FUNCTION(phalcon)
 {
@@ -951,7 +946,7 @@ static PHP_MINFO_FUNCTION(phalcon)
 	php_info_print_table_row(2, "Build Date", __DATE__ " " __TIME__ );
 	php_info_print_table_row(2, "Powered by Zephir", "Version " PHP_PHALCON_ZEPVERSION);
 	php_info_print_table_end();
-	
+
 	DISPLAY_INI_ENTRIES();
 }
 
@@ -963,12 +958,12 @@ static PHP_GINIT_FUNCTION(phalcon)
 
 static PHP_GSHUTDOWN_FUNCTION(phalcon)
 {
-	
+
 }
 
 
 zend_function_entry php_phalcon_functions[] = {
-	ZEND_FE_END
+ZEND_FE_END
 
 };
 
@@ -991,11 +986,7 @@ zend_module_entry phalcon_module_entry = {
 	ZEND_MODULE_GLOBALS(phalcon),
 	PHP_GINIT(phalcon),
 	PHP_GSHUTDOWN(phalcon),
-#ifdef ZEPHIR_POST_REQUEST
-	PHP_PRSHUTDOWN(phalcon),
-#else
 	NULL,
-#endif
 	STANDARD_MODULE_PROPERTIES_EX
 };
 

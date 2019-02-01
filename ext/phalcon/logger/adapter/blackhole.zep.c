@@ -50,7 +50,7 @@ PHP_METHOD(Phalcon_Logger_Adapter_Blackhole, getFormatter) {
 	if (Z_TYPE_P(&_0) != IS_OBJECT) {
 		ZEPHIR_INIT_VAR(&_1$$3);
 		object_init_ex(&_1$$3, phalcon_logger_formatter_line_ce);
-		ZEPHIR_CALL_METHOD(NULL, &_1$$3, "__construct", NULL, 272);
+		ZEPHIR_CALL_METHOD(NULL, &_1$$3, "__construct", NULL, 273);
 		zephir_check_call_status();
 		zephir_update_property_zval(this_ptr, SL("_formatter"), &_1$$3);
 	}

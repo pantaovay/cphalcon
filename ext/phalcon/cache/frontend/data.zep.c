@@ -191,7 +191,7 @@ PHP_METHOD(Phalcon_Cache_Frontend_Data, beforeStore) {
 
 
 
-	ZEPHIR_RETURN_CALL_FUNCTION("serialize", NULL, 61, data);
+	ZEPHIR_RETURN_CALL_FUNCTION("serialize", NULL, 62, data);
 	zephir_check_call_status();
 	RETURN_MM();
 
@@ -221,7 +221,7 @@ PHP_METHOD(Phalcon_Cache_Frontend_Data, afterRetrieve) {
 		RETVAL_ZVAL(data, 1, 0);
 		RETURN_MM();
 	}
-	ZEPHIR_RETURN_CALL_FUNCTION("unserialize", NULL, 62, data);
+	ZEPHIR_RETURN_CALL_FUNCTION("unserialize", NULL, 63, data);
 	zephir_check_call_status();
 	RETURN_MM();
 

@@ -8,72 +8,24 @@ PHP_METHOD(Phalcon_Db_Adapter_Pdo_Mysql, describeIndexes);
 PHP_METHOD(Phalcon_Db_Adapter_Pdo_Mysql, describeReferences);
 PHP_METHOD(Phalcon_Db_Adapter_Pdo_Mysql, addForeignKey);
 
-#if PHP_VERSION_ID >= 70200
-ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_phalcon_db_adapter_pdo_mysql_describecolumns, 0, 1, Phalcon\\Db\\ColumnInterface, 0)
-#else
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_phalcon_db_adapter_pdo_mysql_describecolumns, 0, 1, IS_OBJECT, "Phalcon\\Db\\ColumnInterface", 0)
-#endif
-#if PHP_VERSION_ID >= 70200
-	ZEND_ARG_TYPE_INFO(0, table, IS_STRING, 0)
-#else
+ZEND_BEGIN_ARG_INFO_EX(arginfo_phalcon_db_adapter_pdo_mysql_describecolumns, 0, 0, 1)
 	ZEND_ARG_INFO(0, table)
-#endif
-#if PHP_VERSION_ID >= 70200
-	ZEND_ARG_TYPE_INFO(0, schema, IS_STRING, 1)
-#else
 	ZEND_ARG_INFO(0, schema)
-#endif
 ZEND_END_ARG_INFO()
 
-#if PHP_VERSION_ID >= 70200
-ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_phalcon_db_adapter_pdo_mysql_describeindexes, 0, 1, Phalcon\\Db\\IndexInterface, 0)
-#else
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_phalcon_db_adapter_pdo_mysql_describeindexes, 0, 1, IS_OBJECT, "Phalcon\\Db\\IndexInterface", 0)
-#endif
-#if PHP_VERSION_ID >= 70200
-	ZEND_ARG_TYPE_INFO(0, table, IS_STRING, 0)
-#else
+ZEND_BEGIN_ARG_INFO_EX(arginfo_phalcon_db_adapter_pdo_mysql_describeindexes, 0, 0, 1)
 	ZEND_ARG_INFO(0, table)
-#endif
-#if PHP_VERSION_ID >= 70200
-	ZEND_ARG_TYPE_INFO(0, schema, IS_STRING, 1)
-#else
 	ZEND_ARG_INFO(0, schema)
-#endif
 ZEND_END_ARG_INFO()
 
-#if PHP_VERSION_ID >= 70200
-ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_phalcon_db_adapter_pdo_mysql_describereferences, 0, 1, Phalcon\\Db\\ReferenceInterface, 0)
-#else
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_phalcon_db_adapter_pdo_mysql_describereferences, 0, 1, IS_OBJECT, "Phalcon\\Db\\ReferenceInterface", 0)
-#endif
-#if PHP_VERSION_ID >= 70200
-	ZEND_ARG_TYPE_INFO(0, table, IS_STRING, 0)
-#else
+ZEND_BEGIN_ARG_INFO_EX(arginfo_phalcon_db_adapter_pdo_mysql_describereferences, 0, 0, 1)
 	ZEND_ARG_INFO(0, table)
-#endif
-#if PHP_VERSION_ID >= 70200
-	ZEND_ARG_TYPE_INFO(0, schema, IS_STRING, 1)
-#else
 	ZEND_ARG_INFO(0, schema)
-#endif
 ZEND_END_ARG_INFO()
 
-#if PHP_VERSION_ID >= 70200
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_phalcon_db_adapter_pdo_mysql_addforeignkey, 0, 3, _IS_BOOL, 0)
-#else
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_phalcon_db_adapter_pdo_mysql_addforeignkey, 0, 3, _IS_BOOL, NULL, 0)
-#endif
-#if PHP_VERSION_ID >= 70200
-	ZEND_ARG_TYPE_INFO(0, tableName, IS_STRING, 0)
-#else
+ZEND_BEGIN_ARG_INFO_EX(arginfo_phalcon_db_adapter_pdo_mysql_addforeignkey, 0, 0, 3)
 	ZEND_ARG_INFO(0, tableName)
-#endif
-#if PHP_VERSION_ID >= 70200
-	ZEND_ARG_TYPE_INFO(0, schemaName, IS_STRING, 0)
-#else
 	ZEND_ARG_INFO(0, schemaName)
-#endif
 	ZEND_ARG_OBJ_INFO(0, reference, Phalcon\\Db\\ReferenceInterface, 0)
 ZEND_END_ARG_INFO()
 

@@ -216,7 +216,7 @@ PHP_METHOD(Phalcon_Registry, next) {
 
 	zephir_read_property(&_0, this_ptr, SL("_data"), PH_NOISY_CC | PH_READONLY);
 	ZEPHIR_MAKE_REF(&_0);
-	ZEPHIR_CALL_FUNCTION(NULL, "next", NULL, 385, &_0);
+	ZEPHIR_CALL_FUNCTION(NULL, "next", NULL, 386, &_0);
 	ZEPHIR_UNREF(&_0);
 	zephir_check_call_status();
 	ZEPHIR_MM_RESTORE();
@@ -237,7 +237,7 @@ PHP_METHOD(Phalcon_Registry, key) {
 	ZEPHIR_MM_GROW();
 
 	zephir_read_property(&_0, this_ptr, SL("_data"), PH_NOISY_CC | PH_READONLY);
-	ZEPHIR_RETURN_CALL_FUNCTION("key", NULL, 386, &_0);
+	ZEPHIR_RETURN_CALL_FUNCTION("key", NULL, 387, &_0);
 	zephir_check_call_status();
 	RETURN_MM();
 
@@ -258,7 +258,7 @@ PHP_METHOD(Phalcon_Registry, rewind) {
 
 	zephir_read_property(&_0, this_ptr, SL("_data"), PH_NOISY_CC | PH_READONLY);
 	ZEPHIR_MAKE_REF(&_0);
-	ZEPHIR_CALL_FUNCTION(NULL, "reset", NULL, 387, &_0);
+	ZEPHIR_CALL_FUNCTION(NULL, "reset", NULL, 388, &_0);
 	ZEPHIR_UNREF(&_0);
 	zephir_check_call_status();
 	ZEPHIR_MM_RESTORE();
@@ -280,7 +280,7 @@ PHP_METHOD(Phalcon_Registry, valid) {
 	ZEPHIR_MM_GROW();
 
 	zephir_read_property(&_0, this_ptr, SL("_data"), PH_NOISY_CC | PH_READONLY);
-	ZEPHIR_CALL_FUNCTION(&_1, "key", NULL, 386, &_0);
+	ZEPHIR_CALL_FUNCTION(&_1, "key", NULL, 387, &_0);
 	zephir_check_call_status();
 	RETURN_MM_BOOL(Z_TYPE_P(&_1) != IS_NULL);
 
@@ -300,7 +300,7 @@ PHP_METHOD(Phalcon_Registry, current) {
 	ZEPHIR_MM_GROW();
 
 	zephir_read_property(&_0, this_ptr, SL("_data"), PH_NOISY_CC | PH_READONLY);
-	ZEPHIR_RETURN_CALL_FUNCTION("current", NULL, 388, &_0);
+	ZEPHIR_RETURN_CALL_FUNCTION("current", NULL, 389, &_0);
 	zephir_check_call_status();
 	RETURN_MM();
 
@@ -323,7 +323,7 @@ PHP_METHOD(Phalcon_Registry, __set) {
 	zephir_fetch_params(1, 2, 0, &key_param, &value);
 
 	if (UNEXPECTED(Z_TYPE_P(key_param) != IS_STRING && Z_TYPE_P(key_param) != IS_NULL)) {
-		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'key' must be of the type string") TSRMLS_CC);
+		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'key' must be a string") TSRMLS_CC);
 		RETURN_MM_NULL();
 	}
 	if (EXPECTED(Z_TYPE_P(key_param) == IS_STRING)) {
@@ -334,7 +334,7 @@ PHP_METHOD(Phalcon_Registry, __set) {
 	}
 
 
-	ZEPHIR_CALL_METHOD(NULL, this_ptr, "offsetset", NULL, 389, &key, value);
+	ZEPHIR_CALL_METHOD(NULL, this_ptr, "offsetset", NULL, 390, &key, value);
 	zephir_check_call_status();
 	ZEPHIR_MM_RESTORE();
 
@@ -356,7 +356,7 @@ PHP_METHOD(Phalcon_Registry, __get) {
 	zephir_fetch_params(1, 1, 0, &key_param);
 
 	if (UNEXPECTED(Z_TYPE_P(key_param) != IS_STRING && Z_TYPE_P(key_param) != IS_NULL)) {
-		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'key' must be of the type string") TSRMLS_CC);
+		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'key' must be a string") TSRMLS_CC);
 		RETURN_MM_NULL();
 	}
 	if (EXPECTED(Z_TYPE_P(key_param) == IS_STRING)) {
@@ -367,7 +367,7 @@ PHP_METHOD(Phalcon_Registry, __get) {
 	}
 
 
-	ZEPHIR_RETURN_CALL_METHOD(this_ptr, "offsetget", NULL, 390, &key);
+	ZEPHIR_RETURN_CALL_METHOD(this_ptr, "offsetget", NULL, 391, &key);
 	zephir_check_call_status();
 	RETURN_MM();
 
@@ -386,7 +386,7 @@ PHP_METHOD(Phalcon_Registry, __isset) {
 	zephir_fetch_params(1, 1, 0, &key_param);
 
 	if (UNEXPECTED(Z_TYPE_P(key_param) != IS_STRING && Z_TYPE_P(key_param) != IS_NULL)) {
-		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'key' must be of the type string") TSRMLS_CC);
+		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'key' must be a string") TSRMLS_CC);
 		RETURN_MM_NULL();
 	}
 	if (EXPECTED(Z_TYPE_P(key_param) == IS_STRING)) {
@@ -397,7 +397,7 @@ PHP_METHOD(Phalcon_Registry, __isset) {
 	}
 
 
-	ZEPHIR_RETURN_CALL_METHOD(this_ptr, "offsetexists", NULL, 391, &key);
+	ZEPHIR_RETURN_CALL_METHOD(this_ptr, "offsetexists", NULL, 392, &key);
 	zephir_check_call_status();
 	RETURN_MM();
 
@@ -416,7 +416,7 @@ PHP_METHOD(Phalcon_Registry, __unset) {
 	zephir_fetch_params(1, 1, 0, &key_param);
 
 	if (UNEXPECTED(Z_TYPE_P(key_param) != IS_STRING && Z_TYPE_P(key_param) != IS_NULL)) {
-		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'key' must be of the type string") TSRMLS_CC);
+		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'key' must be a string") TSRMLS_CC);
 		RETURN_MM_NULL();
 	}
 	if (EXPECTED(Z_TYPE_P(key_param) == IS_STRING)) {
@@ -427,7 +427,7 @@ PHP_METHOD(Phalcon_Registry, __unset) {
 	}
 
 
-	ZEPHIR_CALL_METHOD(NULL, this_ptr, "offsetunset", NULL, 392, &key);
+	ZEPHIR_CALL_METHOD(NULL, this_ptr, "offsetunset", NULL, 393, &key);
 	zephir_check_call_status();
 	ZEPHIR_MM_RESTORE();
 

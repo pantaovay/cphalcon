@@ -33,11 +33,7 @@ ZEND_BEGIN_ARG_INFO_EX(arginfo_phalcon_validation_message_group_offsetset, 0, 0,
 	ZEND_ARG_INFO(0, message)
 ZEND_END_ARG_INFO()
 
-#if PHP_VERSION_ID >= 70200
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_phalcon_validation_message_group_offsetexists, 0, 1, _IS_BOOL, 0)
-#else
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_phalcon_validation_message_group_offsetexists, 0, 1, _IS_BOOL, NULL, 0)
-#endif
+ZEND_BEGIN_ARG_INFO_EX(arginfo_phalcon_validation_message_group_offsetexists, 0, 0, 1)
 	ZEND_ARG_INFO(0, index)
 ZEND_END_ARG_INFO()
 
@@ -54,46 +50,10 @@ ZEND_BEGIN_ARG_INFO_EX(arginfo_phalcon_validation_message_group_appendmessages, 
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_phalcon_validation_message_group_filter, 0, 0, 1)
-#if PHP_VERSION_ID >= 70200
-	ZEND_ARG_TYPE_INFO(0, fieldName, IS_STRING, 0)
-#else
 	ZEND_ARG_INFO(0, fieldName)
-#endif
 ZEND_END_ARG_INFO()
 
-#if PHP_VERSION_ID >= 70200
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_phalcon_validation_message_group_count, 0, 0, IS_LONG, 0)
-#else
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_phalcon_validation_message_group_count, 0, 0, IS_LONG, NULL, 0)
-#endif
-ZEND_END_ARG_INFO()
-
-#if PHP_VERSION_ID >= 70200
-ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_phalcon_validation_message_group_current, 0, 0, Phalcon\\Validation\\Message, 0)
-#else
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_phalcon_validation_message_group_current, 0, 0, IS_OBJECT, "Phalcon\\Validation\\Message", 0)
-#endif
-ZEND_END_ARG_INFO()
-
-#if PHP_VERSION_ID >= 70200
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_phalcon_validation_message_group_key, 0, 0, IS_LONG, 0)
-#else
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_phalcon_validation_message_group_key, 0, 0, IS_LONG, NULL, 0)
-#endif
-ZEND_END_ARG_INFO()
-
-#if PHP_VERSION_ID >= 70200
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_phalcon_validation_message_group_valid, 0, 0, _IS_BOOL, 0)
-#else
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_phalcon_validation_message_group_valid, 0, 0, _IS_BOOL, NULL, 0)
-#endif
-ZEND_END_ARG_INFO()
-
-#if PHP_VERSION_ID >= 70200
-ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_phalcon_validation_message_group___set_state, 0, 1, Phalcon\\Validation\\Message\\Group, 0)
-#else
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_phalcon_validation_message_group___set_state, 0, 1, IS_OBJECT, "Phalcon\\Validation\\Message\\Group", 0)
-#endif
+ZEND_BEGIN_ARG_INFO_EX(arginfo_phalcon_validation_message_group___set_state, 0, 0, 1)
 	ZEND_ARG_INFO(0, group)
 ZEND_END_ARG_INFO()
 
@@ -106,12 +66,12 @@ ZEPHIR_INIT_FUNCS(phalcon_validation_message_group_method_entry) {
 	PHP_ME(Phalcon_Validation_Message_Group, appendMessage, arginfo_phalcon_validation_message_group_appendmessage, ZEND_ACC_PUBLIC)
 	PHP_ME(Phalcon_Validation_Message_Group, appendMessages, arginfo_phalcon_validation_message_group_appendmessages, ZEND_ACC_PUBLIC)
 	PHP_ME(Phalcon_Validation_Message_Group, filter, arginfo_phalcon_validation_message_group_filter, ZEND_ACC_PUBLIC)
-	PHP_ME(Phalcon_Validation_Message_Group, count, arginfo_phalcon_validation_message_group_count, ZEND_ACC_PUBLIC)
+	PHP_ME(Phalcon_Validation_Message_Group, count, NULL, ZEND_ACC_PUBLIC)
 	PHP_ME(Phalcon_Validation_Message_Group, rewind, NULL, ZEND_ACC_PUBLIC)
-	PHP_ME(Phalcon_Validation_Message_Group, current, arginfo_phalcon_validation_message_group_current, ZEND_ACC_PUBLIC)
-	PHP_ME(Phalcon_Validation_Message_Group, key, arginfo_phalcon_validation_message_group_key, ZEND_ACC_PUBLIC)
+	PHP_ME(Phalcon_Validation_Message_Group, current, NULL, ZEND_ACC_PUBLIC)
+	PHP_ME(Phalcon_Validation_Message_Group, key, NULL, ZEND_ACC_PUBLIC)
 	PHP_ME(Phalcon_Validation_Message_Group, next, NULL, ZEND_ACC_PUBLIC)
-	PHP_ME(Phalcon_Validation_Message_Group, valid, arginfo_phalcon_validation_message_group_valid, ZEND_ACC_PUBLIC)
+	PHP_ME(Phalcon_Validation_Message_Group, valid, NULL, ZEND_ACC_PUBLIC)
 	PHP_ME(Phalcon_Validation_Message_Group, __set_state, arginfo_phalcon_validation_message_group___set_state, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
 	PHP_FE_END
 };

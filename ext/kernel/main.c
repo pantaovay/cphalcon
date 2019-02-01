@@ -1,13 +1,21 @@
+
 /*
- * This file is part of the Zephir.
- *
- * (c) Zephir Team <team@zephir-lang.com>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code. If you did not receive
- * a copy of the license it is available through the world-wide-web at the
- * following url: https://docs.zephir-lang.com/en/latest/license
- */
+  +------------------------------------------------------------------------+
+  | Zephir Language                                                        |
+  +------------------------------------------------------------------------+
+  | Copyright (c) 2011-2017 Zephir Team (https://www.zephir-lang.com)      |
+  +------------------------------------------------------------------------+
+  | This source file is subject to the New BSD License that is bundled     |
+  | with this package in the file docs/LICENSE.txt.                        |
+  |                                                                        |
+  | If you did not receive a copy of the license and are unable to         |
+  | obtain it through the world-wide-web, please send an email             |
+  | to license@zephir-lang.com so we can send you a copy immediately.      |
+  +------------------------------------------------------------------------+
+  | Authors: Andres Gutierrez <andres@zephir-lang.com>                     |
+  |          Eduar Carvajal <eduar@zephir-lang.com>                        |
+  +------------------------------------------------------------------------+
+*/
 
 #ifdef HAVE_CONFIG_H
 #include "config.h"
@@ -449,34 +457,7 @@ int zephir_declare_class_constant_string(zend_class_entry *ce, const char *name,
 	return zephir_declare_class_constant_stringl(ce, name, name_length, value, strlen(value));
 }
 
-/**
- * Check is PHP Version equals to Runtime PHP Version
- */
-int zephir_is_php_version(unsigned int id)
-{
-	int php_major = PHP_MAJOR_VERSION * 10000;
-	int php_minor = PHP_MINOR_VERSION * 100;
-	int php_release = PHP_RELEASE_VERSION;
-
-	int zep_major = id / 10000;
-	int zep_minor = id / 100 - zep_major * 100;
-	int zep_release = id - (zep_major * 10000 + zep_minor * 100);
-
-	if (zep_minor == 0)
-	{
-		php_minor = 0;
-	}
-
-	if (zep_release == 0)
-	{
-		php_release = 0;
-	}
-
-	return ((php_major + php_minor + php_release) == id ? 1 : 0);
-}
-
-void
-zephir_get_args(zval *return_value)
+void zephir_get_args(zval *return_value)
 {
 	zend_execute_data *ex = EG(current_execute_data);
 	uint32_t arg_count    = ZEND_CALL_NUM_ARGS(ex);
@@ -501,7 +482,7 @@ zephir_get_args(zval *return_value)
 				++i;
 			}
 
-			p = ZEND_CALL_VAR_NUM(ex, i);
+			p = ZEND_CALL_VAR_NUM(ex, ex->func->op_array.last_var + ex->func->op_array.T);
 		}
 
 		while (i < arg_count) {
@@ -519,31 +500,30 @@ zephir_get_args(zval *return_value)
 	}
 }
 
-void
-zephir_get_arg(zval *return_value, zend_long idx)
+void zephir_get_arg(zval *return_value, zend_long idx)
 {
 	zend_execute_data *ex = EG(current_execute_data);
-	uint32_t arg_count;
+	uint32_t arg_count    = ZEND_CALL_NUM_ARGS(ex);
 	zval *arg;
+	uint32_t first_extra_arg;
 
 	if (UNEXPECTED(idx < 0)) {
-		zend_error(E_WARNING, "func_get_arg():  The argument number should be >= 0");
+		zend_error(E_WARNING, "zephir_get_arg():  The argument number should be >= 0");
 		RETURN_FALSE;
 	}
-
-	arg_count = ZEND_CALL_NUM_ARGS(ex);
-#if PHP_VERSION_ID >= 70100
-	if (zend_forbid_dynamic_call("func_get_arg()") == FAILURE) {
-		RETURN_FALSE;
-	}
-#endif
 
 	if (UNEXPECTED((zend_ulong)idx >= arg_count)) {
-		zend_error(E_WARNING, "func_get_arg():  Argument " ZEND_LONG_FMT " not passed to function", idx);
+		zend_error(E_WARNING, "zephir_get_arg():  Argument " ZEND_LONG_FMT " not passed to function", idx);
 		RETURN_FALSE;
 	}
 
-	arg = ZEND_CALL_VAR_NUM(ex, idx);
+	first_extra_arg = ex->func->op_array.num_args;
+	if ((zend_ulong)idx >= first_extra_arg && (arg_count > first_extra_arg)) {
+		arg = ZEND_CALL_VAR_NUM(ex, ex->func->op_array.last_var + ex->func->op_array.T) + (idx - first_extra_arg);
+	}
+	else {
+		arg = ZEND_CALL_VAR_NUM(ex, idx);
+	}
 
 	if (EXPECTED(!Z_ISUNDEF_P(arg))) {
 		ZVAL_DEREF(arg);

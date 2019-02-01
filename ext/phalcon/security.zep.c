@@ -181,7 +181,7 @@ PHP_METHOD(Phalcon_Security, setRandomBytes) {
 	zephir_fetch_params(0, 1, 0, &randomBytes_param);
 
 	if (UNEXPECTED(Z_TYPE_P(randomBytes_param) != IS_LONG)) {
-		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'randomBytes' must be of the type long") TSRMLS_CC);
+		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'randomBytes' must be a long") TSRMLS_CC);
 		RETURN_NULL();
 	}
 	randomBytes = Z_LVAL_P(randomBytes_param);
@@ -363,7 +363,7 @@ PHP_METHOD(Phalcon_Security, hash) {
 				ZEPHIR_THROW_EXCEPTION_DEBUG_STR(phalcon_security_exception_ce, "Unable to get random bytes for the salt", "phalcon/security.zep", 222);
 				return;
 			}
-			ZEPHIR_RETURN_CALL_FUNCTION("crypt", NULL, 393, &password, &saltBytes);
+			ZEPHIR_RETURN_CALL_FUNCTION("crypt", NULL, 394, &password, &saltBytes);
 			zephir_check_call_status();
 			RETURN_MM();
 		}
@@ -384,7 +384,7 @@ PHP_METHOD(Phalcon_Security, hash) {
 			}
 			ZEPHIR_INIT_VAR(&_6$$15);
 			ZEPHIR_CONCAT_SVSVS(&_6$$15, "$", &variant, "$", &saltBytes, "$");
-			ZEPHIR_RETURN_CALL_FUNCTION("crypt", NULL, 393, &password, &_6$$15);
+			ZEPHIR_RETURN_CALL_FUNCTION("crypt", NULL, 394, &password, &_6$$15);
 			zephir_check_call_status();
 			RETURN_MM();
 		}
@@ -405,11 +405,11 @@ PHP_METHOD(Phalcon_Security, hash) {
 		ZEPHIR_INIT_VAR(&_8$$17);
 		ZVAL_STRING(&_8$$17, "%02s");
 		ZVAL_LONG(&_7$$17, workFactor);
-		ZEPHIR_CALL_FUNCTION(&_9$$17, "sprintf", NULL, 145, &_8$$17, &_7$$17);
+		ZEPHIR_CALL_FUNCTION(&_9$$17, "sprintf", NULL, 146, &_8$$17, &_7$$17);
 		zephir_check_call_status();
 		ZEPHIR_INIT_VAR(&_10$$17);
 		ZEPHIR_CONCAT_SVSVSVS(&_10$$17, "$2", &variant, "$", &_9$$17, "$", &saltBytes, "$");
-		ZEPHIR_RETURN_CALL_FUNCTION("crypt", NULL, 393, &password, &_10$$17);
+		ZEPHIR_RETURN_CALL_FUNCTION("crypt", NULL, 394, &password, &_10$$17);
 		zephir_check_call_status();
 		RETURN_MM();
 	} while(0);
@@ -459,7 +459,7 @@ PHP_METHOD(Phalcon_Security, checkHash) {
 			RETURN_MM_BOOL(0);
 		}
 	}
-	ZEPHIR_CALL_FUNCTION(&_1, "crypt", NULL, 393, &password, &passwordHash);
+	ZEPHIR_CALL_FUNCTION(&_1, "crypt", NULL, 394, &password, &passwordHash);
 	zephir_check_call_status();
 	zephir_get_strval(&_2, &_1);
 	ZEPHIR_CPY_WRT(&cryptedHash, &_2);
@@ -798,7 +798,7 @@ PHP_METHOD(Phalcon_Security, computeHmac) {
 
 
 	ZVAL_BOOL(&_0, (raw ? 1 : 0));
-	ZEPHIR_CALL_FUNCTION(&hmac, "hash_hmac", NULL, 139, &algo, &data, &key, &_0);
+	ZEPHIR_CALL_FUNCTION(&hmac, "hash_hmac", NULL, 140, &algo, &data, &key, &_0);
 	zephir_check_call_status();
 	if (!(zephir_is_true(&hmac))) {
 		ZEPHIR_INIT_VAR(&_1$$3);
@@ -902,7 +902,7 @@ PHP_METHOD(Phalcon_Security, hasLibreSsl) {
  */
 PHP_METHOD(Phalcon_Security, getSslVersionNumber) {
 
-	zval matches, _0, _1, _2, _3, _4, _5, _6, _7$$5;
+	zval matches, _0, _1, _2, _3, _4, _5, _6$$5;
 	zend_long ZEPHIR_LAST_CALL_STATUS, major = 0, minor = 0, patch = 0;
 	zval *this_ptr = getThis();
 
@@ -913,8 +913,7 @@ PHP_METHOD(Phalcon_Security, getSslVersionNumber) {
 	ZVAL_UNDEF(&_3);
 	ZVAL_UNDEF(&_4);
 	ZVAL_UNDEF(&_5);
-	ZVAL_UNDEF(&_6);
-	ZVAL_UNDEF(&_7$$5);
+	ZVAL_UNDEF(&_6$$5);
 
 	ZEPHIR_MM_GROW();
 
@@ -928,26 +927,24 @@ PHP_METHOD(Phalcon_Security, getSslVersionNumber) {
 		RETURN_MM_LONG(0);
 	}
 	ZEPHIR_INIT_NVAR(&_0);
-	ZEPHIR_GET_CONSTANT(&_0, "OPENSSL_VERSION_TEXT");
 	ZEPHIR_INIT_VAR(&_2);
-	ZVAL_STRING(&_2, "#(?:Libre|Open)SSL ([\\d]+)\\.([\\d]+)(?:\\.([\\d]+))?#");
+	ZEPHIR_GET_CONSTANT(&_2, "OPENSSL_VERSION_TEXT");
 	ZEPHIR_INIT_VAR(&_3);
-	ZEPHIR_INIT_VAR(&_4);
-	ZVAL_STRING(&_4, "#(?:Libre|Open)SSL ([\\d]+)\\.([\\d]+)(?:\\.([\\d]+))?#");
-	zephir_preg_match(&_3, &_4, &_0, &matches, 0, 0 , 0  TSRMLS_CC);
+	ZVAL_STRING(&_3, "#(?:Libre|Open)SSL ([\\d]+)\\.([\\d]+)(?:\\.([\\d]+))?#");
+	zephir_preg_match(&_0, &_3, &_2, &matches, 0, 0 , 0  TSRMLS_CC);
 	if (!(zephir_array_isset_long(&matches, 2))) {
 		RETURN_MM_LONG(0);
 	}
+	ZEPHIR_OBS_VAR(&_4);
+	zephir_array_fetch_long(&_4, &matches, 1, PH_NOISY, "phalcon/security.zep", 532 TSRMLS_CC);
+	major = zephir_get_intval(&_4);
 	ZEPHIR_OBS_VAR(&_5);
-	zephir_array_fetch_long(&_5, &matches, 1, PH_NOISY, "phalcon/security.zep", 532 TSRMLS_CC);
-	major = zephir_get_intval(&_5);
-	ZEPHIR_OBS_VAR(&_6);
-	zephir_array_fetch_long(&_6, &matches, 2, PH_NOISY, "phalcon/security.zep", 533 TSRMLS_CC);
-	minor = zephir_get_intval(&_6);
+	zephir_array_fetch_long(&_5, &matches, 2, PH_NOISY, "phalcon/security.zep", 533 TSRMLS_CC);
+	minor = zephir_get_intval(&_5);
 	if (zephir_array_isset_long(&matches, 3)) {
-		ZEPHIR_OBS_VAR(&_7$$5);
-		zephir_array_fetch_long(&_7$$5, &matches, 3, PH_NOISY, "phalcon/security.zep", 536 TSRMLS_CC);
-		patch = zephir_get_intval(&_7$$5);
+		ZEPHIR_OBS_VAR(&_6$$5);
+		zephir_array_fetch_long(&_6$$5, &matches, 3, PH_NOISY, "phalcon/security.zep", 536 TSRMLS_CC);
+		patch = zephir_get_intval(&_6$$5);
 	}
 	RETURN_MM_LONG((((10000 * major) + (100 * minor)) + patch));
 

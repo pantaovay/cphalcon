@@ -12,19 +12,11 @@ ZEND_BEGIN_ARG_INFO_EX(arginfo_phalcon_mvc_model_metadata_session___construct, 0
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_phalcon_mvc_model_metadata_session_read, 0, 0, 1)
-#if PHP_VERSION_ID >= 70200
-	ZEND_ARG_TYPE_INFO(0, key, IS_STRING, 0)
-#else
 	ZEND_ARG_INFO(0, key)
-#endif
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_phalcon_mvc_model_metadata_session_write, 0, 0, 2)
-#if PHP_VERSION_ID >= 70200
-	ZEND_ARG_TYPE_INFO(0, key, IS_STRING, 0)
-#else
 	ZEND_ARG_INFO(0, key)
-#endif
 	ZEND_ARG_INFO(0, data)
 ZEND_END_ARG_INFO()
 

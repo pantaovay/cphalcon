@@ -91,7 +91,7 @@ PHP_METHOD(Phalcon_Validation_Validator_Digit, validate) {
 	zephir_fetch_params(1, 2, 0, &validation, &field_param);
 
 	if (UNEXPECTED(Z_TYPE_P(field_param) != IS_STRING && Z_TYPE_P(field_param) != IS_NULL)) {
-		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'field' must be of the type string") TSRMLS_CC);
+		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'field' must be a string") TSRMLS_CC);
 		RETURN_MM_NULL();
 	}
 	if (EXPECTED(Z_TYPE_P(field_param) == IS_STRING)) {
@@ -106,7 +106,7 @@ PHP_METHOD(Phalcon_Validation_Validator_Digit, validate) {
 	zephir_check_call_status();
 	_0 = Z_TYPE_P(&value) == IS_LONG;
 	if (!(_0)) {
-		ZEPHIR_CALL_FUNCTION(&_1, "ctype_digit", NULL, 431, &value);
+		ZEPHIR_CALL_FUNCTION(&_1, "ctype_digit", NULL, 432, &value);
 		zephir_check_call_status();
 		_0 = zephir_is_true(&_1);
 	}
@@ -130,7 +130,7 @@ PHP_METHOD(Phalcon_Validation_Validator_Digit, validate) {
 	zephir_check_call_status();
 	ZEPHIR_INIT_VAR(&_4);
 	ZVAL_STRING(&_4, "Digit");
-	ZEPHIR_CALL_METHOD(NULL, &_2, "__construct", NULL, 424, &_3, &field, &_4, &code);
+	ZEPHIR_CALL_METHOD(NULL, &_2, "__construct", NULL, 425, &_3, &field, &_4, &code);
 	zephir_check_call_status();
 	ZEPHIR_CALL_METHOD(NULL, validation, "appendmessage", NULL, 0, &_2);
 	zephir_check_call_status();

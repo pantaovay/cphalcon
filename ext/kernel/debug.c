@@ -36,7 +36,6 @@ void zephir_vdump(zval *var, const char *func)
     }
 
     if (!Z_REFCOUNTED_P(var)) {
-    	fprintf(stderr, "%s: (%p) is not reference-counted, type=%d\n", func, var, Z_TYPE_P(var));
         return;
     }
 

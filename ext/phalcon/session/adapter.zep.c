@@ -262,6 +262,10 @@ PHP_METHOD(Phalcon_Session_Adapter, get) {
 
 	ZEPHIR_MM_GROW();
 	zephir_get_global(&_SESSION, SL("_SESSION"));
+	if (!_SESSION) {
+		ZEPHIR_THROW_EXCEPTION_STR(zend_exception_get_default(), "Invalid superglobal");
+		return;
+	}
 	zephir_fetch_params(1, 1, 2, &index_param, &defaultValue, &remove_param);
 
 	zephir_get_strval(&index, index_param);
@@ -315,6 +319,10 @@ PHP_METHOD(Phalcon_Session_Adapter, set) {
 
 	ZEPHIR_MM_GROW();
 	zephir_get_global(&_SESSION, SL("_SESSION"));
+	if (!_SESSION) {
+		ZEPHIR_THROW_EXCEPTION_STR(zend_exception_get_default(), "Invalid superglobal");
+		return;
+	}
 	zephir_fetch_params(1, 2, 0, &index_param, &value);
 
 	zephir_get_strval(&index, index_param);
@@ -353,6 +361,10 @@ PHP_METHOD(Phalcon_Session_Adapter, has) {
 
 	ZEPHIR_MM_GROW();
 	zephir_get_global(&_SESSION, SL("_SESSION"));
+	if (!_SESSION) {
+		ZEPHIR_THROW_EXCEPTION_STR(zend_exception_get_default(), "Invalid superglobal");
+		return;
+	}
 	zephir_fetch_params(1, 1, 0, &index_param);
 
 	zephir_get_strval(&index, index_param);
@@ -387,6 +399,10 @@ PHP_METHOD(Phalcon_Session_Adapter, remove) {
 
 	ZEPHIR_MM_GROW();
 	zephir_get_global(&_SESSION, SL("_SESSION"));
+	if (!_SESSION) {
+		ZEPHIR_THROW_EXCEPTION_STR(zend_exception_get_default(), "Invalid superglobal");
+		return;
+	}
 	zephir_fetch_params(1, 1, 0, &index_param);
 
 	zephir_get_strval(&index, index_param);
@@ -703,6 +719,10 @@ PHP_METHOD(Phalcon_Session_Adapter, removeSessionData) {
 
 	ZEPHIR_MM_GROW();
 	zephir_get_global(&_SESSION, SL("_SESSION"));
+	if (!_SESSION) {
+		ZEPHIR_THROW_EXCEPTION_STR(zend_exception_get_default(), "Invalid superglobal");
+		return;
+	}
 
 	ZEPHIR_OBS_VAR(&uniqueId);
 	zephir_read_property(&uniqueId, this_ptr, SL("_uniqueId"), PH_NOISY_CC);

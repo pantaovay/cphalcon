@@ -341,7 +341,7 @@ PHP_METHOD(Phalcon_Cli_Console, setArgument) {
 		str = 1;
 	} else {
 	if (UNEXPECTED(Z_TYPE_P(str_param) != IS_TRUE && Z_TYPE_P(str_param) != IS_FALSE)) {
-		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'str' must be of the type bool") TSRMLS_CC);
+		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'str' must be a bool") TSRMLS_CC);
 		RETURN_MM_NULL();
 	}
 	str = (Z_TYPE_P(str_param) == IS_TRUE);
@@ -350,7 +350,7 @@ PHP_METHOD(Phalcon_Cli_Console, setArgument) {
 		shift = 1;
 	} else {
 	if (UNEXPECTED(Z_TYPE_P(shift_param) != IS_TRUE && Z_TYPE_P(shift_param) != IS_FALSE)) {
-		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'shift' must be of the type bool") TSRMLS_CC);
+		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'shift' must be a bool") TSRMLS_CC);
 		RETURN_MM_NULL();
 	}
 	shift = (Z_TYPE_P(shift_param) == IS_TRUE);
@@ -382,7 +382,7 @@ PHP_METHOD(Phalcon_Cli_Console, setArgument) {
 			ZEPHIR_INIT_NVAR(&_2$$5);
 			ZVAL_STRING(&_2$$5, "--");
 			ZVAL_LONG(&_3$$5, 2);
-			ZEPHIR_CALL_FUNCTION(&_4$$5, "strncmp", &_5, 124, &arg, &_2$$5, &_3$$5);
+			ZEPHIR_CALL_FUNCTION(&_4$$5, "strncmp", &_5, 125, &arg, &_2$$5, &_3$$5);
 			zephir_check_call_status();
 			if (ZEPHIR_IS_LONG(&_4$$5, 0)) {
 				ZEPHIR_INIT_NVAR(&_6$$6);
@@ -414,7 +414,7 @@ PHP_METHOD(Phalcon_Cli_Console, setArgument) {
 				ZEPHIR_INIT_NVAR(&_17$$9);
 				ZVAL_STRING(&_17$$9, "-");
 				ZVAL_LONG(&_18$$9, 1);
-				ZEPHIR_CALL_FUNCTION(&_19$$9, "strncmp", &_5, 124, &arg, &_17$$9, &_18$$9);
+				ZEPHIR_CALL_FUNCTION(&_19$$9, "strncmp", &_5, 125, &arg, &_17$$9, &_18$$9);
 				zephir_check_call_status();
 				if (ZEPHIR_IS_LONG(&_19$$9, 0)) {
 					ZVAL_LONG(&_20$$10, 1);

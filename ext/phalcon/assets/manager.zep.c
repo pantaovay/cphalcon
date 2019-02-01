@@ -161,7 +161,7 @@ PHP_METHOD(Phalcon_Assets_Manager, addCss) {
 	zephir_fetch_params(1, 1, 3, &path_param, &local, &filter, &attributes);
 
 	if (UNEXPECTED(Z_TYPE_P(path_param) != IS_STRING && Z_TYPE_P(path_param) != IS_NULL)) {
-		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'path' must be of the type string") TSRMLS_CC);
+		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'path' must be a string") TSRMLS_CC);
 		RETURN_MM_NULL();
 	}
 	if (EXPECTED(Z_TYPE_P(path_param) == IS_STRING)) {
@@ -186,7 +186,7 @@ PHP_METHOD(Phalcon_Assets_Manager, addCss) {
 
 	ZEPHIR_INIT_VAR(&_0);
 	object_init_ex(&_0, phalcon_assets_resource_css_ce);
-	ZEPHIR_CALL_METHOD(NULL, &_0, "__construct", NULL, 94, &path, local, filter, attributes);
+	ZEPHIR_CALL_METHOD(NULL, &_0, "__construct", NULL, 95, &path, local, filter, attributes);
 	zephir_check_call_status();
 	ZEPHIR_INIT_VAR(&_1);
 	ZVAL_STRING(&_1, "css");
@@ -230,7 +230,7 @@ PHP_METHOD(Phalcon_Assets_Manager, addInlineCss) {
 
 	ZEPHIR_INIT_VAR(&_0);
 	object_init_ex(&_0, phalcon_assets_inline_css_ce);
-	ZEPHIR_CALL_METHOD(NULL, &_0, "__construct", NULL, 95, &content, filter, attributes);
+	ZEPHIR_CALL_METHOD(NULL, &_0, "__construct", NULL, 96, &content, filter, attributes);
 	zephir_check_call_status();
 	ZEPHIR_INIT_VAR(&_1);
 	ZVAL_STRING(&_1, "css");
@@ -268,7 +268,7 @@ PHP_METHOD(Phalcon_Assets_Manager, addJs) {
 	zephir_fetch_params(1, 1, 3, &path_param, &local, &filter, &attributes);
 
 	if (UNEXPECTED(Z_TYPE_P(path_param) != IS_STRING && Z_TYPE_P(path_param) != IS_NULL)) {
-		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'path' must be of the type string") TSRMLS_CC);
+		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'path' must be a string") TSRMLS_CC);
 		RETURN_MM_NULL();
 	}
 	if (EXPECTED(Z_TYPE_P(path_param) == IS_STRING)) {
@@ -293,7 +293,7 @@ PHP_METHOD(Phalcon_Assets_Manager, addJs) {
 
 	ZEPHIR_INIT_VAR(&_0);
 	object_init_ex(&_0, phalcon_assets_resource_js_ce);
-	ZEPHIR_CALL_METHOD(NULL, &_0, "__construct", NULL, 96, &path, local, filter, attributes);
+	ZEPHIR_CALL_METHOD(NULL, &_0, "__construct", NULL, 97, &path, local, filter, attributes);
 	zephir_check_call_status();
 	ZEPHIR_INIT_VAR(&_1);
 	ZVAL_STRING(&_1, "js");
@@ -337,7 +337,7 @@ PHP_METHOD(Phalcon_Assets_Manager, addInlineJs) {
 
 	ZEPHIR_INIT_VAR(&_0);
 	object_init_ex(&_0, phalcon_assets_inline_js_ce);
-	ZEPHIR_CALL_METHOD(NULL, &_0, "__construct", NULL, 97, &content, filter, attributes);
+	ZEPHIR_CALL_METHOD(NULL, &_0, "__construct", NULL, 98, &content, filter, attributes);
 	zephir_check_call_status();
 	ZEPHIR_INIT_VAR(&_1);
 	ZVAL_STRING(&_1, "js");
@@ -372,7 +372,7 @@ PHP_METHOD(Phalcon_Assets_Manager, addResourceByType) {
 	zephir_fetch_params(1, 2, 0, &type_param, &resource);
 
 	if (UNEXPECTED(Z_TYPE_P(type_param) != IS_STRING && Z_TYPE_P(type_param) != IS_NULL)) {
-		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'type' must be of the type string") TSRMLS_CC);
+		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'type' must be a string") TSRMLS_CC);
 		RETURN_MM_NULL();
 	}
 	if (EXPECTED(Z_TYPE_P(type_param) == IS_STRING)) {
@@ -388,11 +388,11 @@ PHP_METHOD(Phalcon_Assets_Manager, addResourceByType) {
 	if (!(zephir_array_isset_fetch(&collection, &_0, &type, 0 TSRMLS_CC))) {
 		ZEPHIR_INIT_NVAR(&collection);
 		object_init_ex(&collection, phalcon_assets_collection_ce);
-		ZEPHIR_CALL_METHOD(NULL, &collection, "__construct", NULL, 98);
+		ZEPHIR_CALL_METHOD(NULL, &collection, "__construct", NULL, 99);
 		zephir_check_call_status();
 		zephir_update_property_array(this_ptr, SL("_collections"), &type, &collection TSRMLS_CC);
 	}
-	ZEPHIR_CALL_METHOD(NULL, &collection, "add", NULL, 99, resource);
+	ZEPHIR_CALL_METHOD(NULL, &collection, "add", NULL, 100, resource);
 	zephir_check_call_status();
 	RETURN_THIS();
 
@@ -417,7 +417,7 @@ PHP_METHOD(Phalcon_Assets_Manager, addInlineCodeByType) {
 	zephir_fetch_params(1, 2, 0, &type_param, &code);
 
 	if (UNEXPECTED(Z_TYPE_P(type_param) != IS_STRING && Z_TYPE_P(type_param) != IS_NULL)) {
-		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'type' must be of the type string") TSRMLS_CC);
+		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'type' must be a string") TSRMLS_CC);
 		RETURN_MM_NULL();
 	}
 	if (EXPECTED(Z_TYPE_P(type_param) == IS_STRING)) {
@@ -433,11 +433,11 @@ PHP_METHOD(Phalcon_Assets_Manager, addInlineCodeByType) {
 	if (!(zephir_array_isset_fetch(&collection, &_0, &type, 0 TSRMLS_CC))) {
 		ZEPHIR_INIT_NVAR(&collection);
 		object_init_ex(&collection, phalcon_assets_collection_ce);
-		ZEPHIR_CALL_METHOD(NULL, &collection, "__construct", NULL, 98);
+		ZEPHIR_CALL_METHOD(NULL, &collection, "__construct", NULL, 99);
 		zephir_check_call_status();
 		zephir_update_property_array(this_ptr, SL("_collections"), &type, &collection TSRMLS_CC);
 	}
-	ZEPHIR_CALL_METHOD(NULL, &collection, "addinline", NULL, 100, code);
+	ZEPHIR_CALL_METHOD(NULL, &collection, "addinline", NULL, 101, code);
 	zephir_check_call_status();
 	RETURN_THIS();
 
@@ -519,7 +519,7 @@ PHP_METHOD(Phalcon_Assets_Manager, set) {
 	zephir_fetch_params(1, 2, 0, &id_param, &collection);
 
 	if (UNEXPECTED(Z_TYPE_P(id_param) != IS_STRING && Z_TYPE_P(id_param) != IS_NULL)) {
-		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'id' must be of the type string") TSRMLS_CC);
+		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'id' must be a string") TSRMLS_CC);
 		RETURN_MM_NULL();
 	}
 	if (EXPECTED(Z_TYPE_P(id_param) == IS_STRING)) {
@@ -556,7 +556,7 @@ PHP_METHOD(Phalcon_Assets_Manager, get) {
 	zephir_fetch_params(1, 1, 0, &id_param);
 
 	if (UNEXPECTED(Z_TYPE_P(id_param) != IS_STRING && Z_TYPE_P(id_param) != IS_NULL)) {
-		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'id' must be of the type string") TSRMLS_CC);
+		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'id' must be a string") TSRMLS_CC);
 		RETURN_MM_NULL();
 	}
 	if (EXPECTED(Z_TYPE_P(id_param) == IS_STRING)) {
@@ -594,7 +594,7 @@ PHP_METHOD(Phalcon_Assets_Manager, getCss) {
 	zephir_read_property(&_0, this_ptr, SL("_collections"), PH_NOISY_CC | PH_READONLY);
 	if (!(zephir_array_isset_string_fetch(&collection, &_0, SL("css"), 1))) {
 		object_init_ex(return_value, phalcon_assets_collection_ce);
-		ZEPHIR_CALL_METHOD(NULL, return_value, "__construct", NULL, 98);
+		ZEPHIR_CALL_METHOD(NULL, return_value, "__construct", NULL, 99);
 		zephir_check_call_status();
 		RETURN_MM();
 	}
@@ -619,7 +619,7 @@ PHP_METHOD(Phalcon_Assets_Manager, getJs) {
 	zephir_read_property(&_0, this_ptr, SL("_collections"), PH_NOISY_CC | PH_READONLY);
 	if (!(zephir_array_isset_string_fetch(&collection, &_0, SL("js"), 1))) {
 		object_init_ex(return_value, phalcon_assets_collection_ce);
-		ZEPHIR_CALL_METHOD(NULL, return_value, "__construct", NULL, 98);
+		ZEPHIR_CALL_METHOD(NULL, return_value, "__construct", NULL, 99);
 		zephir_check_call_status();
 		RETURN_MM();
 	}
@@ -652,7 +652,7 @@ PHP_METHOD(Phalcon_Assets_Manager, collection) {
 	if (!(zephir_array_isset_fetch(&collection, &_0, &name, 0 TSRMLS_CC))) {
 		ZEPHIR_INIT_NVAR(&collection);
 		object_init_ex(&collection, phalcon_assets_collection_ce);
-		ZEPHIR_CALL_METHOD(NULL, &collection, "__construct", NULL, 98);
+		ZEPHIR_CALL_METHOD(NULL, &collection, "__construct", NULL, 99);
 		zephir_check_call_status();
 		zephir_update_property_array(this_ptr, SL("_collections"), &name, &collection TSRMLS_CC);
 	}
@@ -825,7 +825,7 @@ PHP_METHOD(Phalcon_Assets_Manager, output) {
 				ZEPHIR_MM_RESTORE();
 				return;
 			}
-			ZEPHIR_CALL_FUNCTION(&_3$$9, "is_dir", NULL, 101, &completeTargetPath);
+			ZEPHIR_CALL_FUNCTION(&_3$$9, "is_dir", NULL, 102, &completeTargetPath);
 			zephir_check_call_status();
 			if (zephir_is_true(&_3$$9)) {
 				ZEPHIR_INIT_VAR(&_4$$11);
@@ -1380,7 +1380,7 @@ PHP_METHOD(Phalcon_Assets_Manager, exists) {
 	zephir_fetch_params(1, 1, 0, &id_param);
 
 	if (UNEXPECTED(Z_TYPE_P(id_param) != IS_STRING && Z_TYPE_P(id_param) != IS_NULL)) {
-		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'id' must be of the type string") TSRMLS_CC);
+		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'id' must be a string") TSRMLS_CC);
 		RETURN_MM_NULL();
 	}
 	if (EXPECTED(Z_TYPE_P(id_param) == IS_STRING)) {

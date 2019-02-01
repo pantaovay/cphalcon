@@ -121,9 +121,9 @@ PHP_METHOD(Phalcon_Mvc_Model_MetaData_Libmemcached, __construct) {
 	ZEPHIR_OBS_VAR(&_4);
 	zephir_read_property(&_4, this_ptr, SL("_ttl"), PH_NOISY_CC);
 	zephir_array_update_string(&_3, SL("lifetime"), &_4, PH_COPY | PH_SEPARATE);
-	ZEPHIR_CALL_METHOD(NULL, &_2, "__construct", NULL, 309, &_3);
+	ZEPHIR_CALL_METHOD(NULL, &_2, "__construct", NULL, 310, &_3);
 	zephir_check_call_status();
-	ZEPHIR_CALL_METHOD(NULL, &_1, "__construct", NULL, 310, &_2, options);
+	ZEPHIR_CALL_METHOD(NULL, &_1, "__construct", NULL, 311, &_2, options);
 	zephir_check_call_status();
 	zephir_update_property_zval(this_ptr, SL("_memcache"), &_1);
 	ZEPHIR_MM_RESTORE();
@@ -148,7 +148,7 @@ PHP_METHOD(Phalcon_Mvc_Model_MetaData_Libmemcached, read) {
 	zephir_fetch_params(1, 1, 0, &key_param);
 
 	if (UNEXPECTED(Z_TYPE_P(key_param) != IS_STRING && Z_TYPE_P(key_param) != IS_NULL)) {
-		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'key' must be of the type string") TSRMLS_CC);
+		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'key' must be a string") TSRMLS_CC);
 		RETURN_MM_NULL();
 	}
 	if (EXPECTED(Z_TYPE_P(key_param) == IS_STRING)) {
@@ -187,7 +187,7 @@ PHP_METHOD(Phalcon_Mvc_Model_MetaData_Libmemcached, write) {
 	zephir_fetch_params(1, 2, 0, &key_param, &data);
 
 	if (UNEXPECTED(Z_TYPE_P(key_param) != IS_STRING && Z_TYPE_P(key_param) != IS_NULL)) {
-		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'key' must be of the type string") TSRMLS_CC);
+		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'key' must be a string") TSRMLS_CC);
 		RETURN_MM_NULL();
 	}
 	if (EXPECTED(Z_TYPE_P(key_param) == IS_STRING)) {

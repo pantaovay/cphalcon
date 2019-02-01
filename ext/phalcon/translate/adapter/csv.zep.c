@@ -77,7 +77,7 @@ PHP_METHOD(Phalcon_Translate_Adapter_Csv, __construct) {
 	ZVAL_STRING(&_3, ";");
 	ZEPHIR_INIT_VAR(&_4);
 	ZVAL_STRING(&_4, "\"");
-	ZEPHIR_CALL_METHOD(NULL, this_ptr, "_load", NULL, 418, &_1, &_2, &_3, &_4);
+	ZEPHIR_CALL_METHOD(NULL, this_ptr, "_load", NULL, 419, &_1, &_2, &_3, &_4);
 	zephir_check_call_status();
 	ZEPHIR_MM_RESTORE();
 
@@ -122,7 +122,7 @@ PHP_METHOD(Phalcon_Translate_Adapter_Csv, _load) {
 
 	ZEPHIR_INIT_VAR(&_0);
 	ZVAL_STRING(&_0, "rb");
-	ZEPHIR_CALL_FUNCTION(&fileHandler, "fopen", NULL, 268, file, &_0);
+	ZEPHIR_CALL_FUNCTION(&fileHandler, "fopen", NULL, 269, file, &_0);
 	zephir_check_call_status();
 	if (Z_TYPE_P(&fileHandler) != IS_RESOURCE) {
 		ZEPHIR_INIT_VAR(&_1$$3);
@@ -136,7 +136,7 @@ PHP_METHOD(Phalcon_Translate_Adapter_Csv, _load) {
 		return;
 	}
 	while (1) {
-		ZEPHIR_CALL_FUNCTION(&data, "fgetcsv", &_3, 419, &fileHandler, length, delimiter, enclosure);
+		ZEPHIR_CALL_FUNCTION(&data, "fgetcsv", &_3, 420, &fileHandler, length, delimiter, enclosure);
 		zephir_check_call_status();
 		if (ZEPHIR_IS_FALSE_IDENTICAL(&data)) {
 			break;
@@ -183,7 +183,7 @@ PHP_METHOD(Phalcon_Translate_Adapter_Csv, query) {
 	zephir_fetch_params(1, 1, 1, &index_param, &placeholders);
 
 	if (UNEXPECTED(Z_TYPE_P(index_param) != IS_STRING && Z_TYPE_P(index_param) != IS_NULL)) {
-		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'index' must be of the type string") TSRMLS_CC);
+		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'index' must be a string") TSRMLS_CC);
 		RETURN_MM_NULL();
 	}
 	if (EXPECTED(Z_TYPE_P(index_param) == IS_STRING)) {
@@ -225,7 +225,7 @@ PHP_METHOD(Phalcon_Translate_Adapter_Csv, exists) {
 	zephir_fetch_params(1, 1, 0, &index_param);
 
 	if (UNEXPECTED(Z_TYPE_P(index_param) != IS_STRING && Z_TYPE_P(index_param) != IS_NULL)) {
-		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'index' must be of the type string") TSRMLS_CC);
+		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'index' must be a string") TSRMLS_CC);
 		RETURN_MM_NULL();
 	}
 	if (EXPECTED(Z_TYPE_P(index_param) == IS_STRING)) {

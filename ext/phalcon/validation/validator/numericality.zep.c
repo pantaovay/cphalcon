@@ -70,10 +70,10 @@ ZEPHIR_INIT_CLASS(Phalcon_Validation_Validator_Numericality) {
  */
 PHP_METHOD(Phalcon_Validation_Validator_Numericality, validate) {
 
-	zend_bool _4;
+	zend_bool _3;
 	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval field;
-	zval *validation, validation_sub, *field_param = NULL, value, message, label, replacePairs, code, _0, _1, _2, _3, _5$$3, _6$$3, _7$$3;
+	zval *validation, validation_sub, *field_param = NULL, value, message, label, replacePairs, code, _0, _1, _2, _4$$3, _5$$3, _6$$3;
 	zval *this_ptr = getThis();
 
 	ZVAL_UNDEF(&validation_sub);
@@ -85,17 +85,16 @@ PHP_METHOD(Phalcon_Validation_Validator_Numericality, validate) {
 	ZVAL_UNDEF(&_0);
 	ZVAL_UNDEF(&_1);
 	ZVAL_UNDEF(&_2);
-	ZVAL_UNDEF(&_3);
+	ZVAL_UNDEF(&_4$$3);
 	ZVAL_UNDEF(&_5$$3);
 	ZVAL_UNDEF(&_6$$3);
-	ZVAL_UNDEF(&_7$$3);
 	ZVAL_UNDEF(&field);
 
 	ZEPHIR_MM_GROW();
 	zephir_fetch_params(1, 2, 0, &validation, &field_param);
 
 	if (UNEXPECTED(Z_TYPE_P(field_param) != IS_STRING && Z_TYPE_P(field_param) != IS_NULL)) {
-		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'field' must be of the type string") TSRMLS_CC);
+		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'field' must be a string") TSRMLS_CC);
 		RETURN_MM_NULL();
 	}
 	if (EXPECTED(Z_TYPE_P(field_param) == IS_STRING)) {
@@ -110,36 +109,34 @@ PHP_METHOD(Phalcon_Validation_Validator_Numericality, validate) {
 	zephir_check_call_status();
 	ZEPHIR_INIT_VAR(&_0);
 	ZEPHIR_INIT_VAR(&_1);
-	ZVAL_STRING(&_1, "/^-?\\d+(?:[\\.,]\\d+)?$/");
 	ZEPHIR_INIT_VAR(&_2);
-	ZEPHIR_INIT_VAR(&_3);
-	ZVAL_STRING(&_3, "/^-?\\d+(?:[\\.,]\\d+)?$/");
-	zephir_preg_match(&_2, &_3, &value, &_0, 0, 0 , 0  TSRMLS_CC);
-	_4 = !zephir_is_true(&_2);
-	if (!(_4)) {
-		_4 = !(zephir_is_numeric(&value));
+	ZVAL_STRING(&_2, "/^-?\\d+(?:[\\.,]\\d+)?$/");
+	zephir_preg_match(&_1, &_2, &value, &_0, 0, 0 , 0  TSRMLS_CC);
+	_3 = !zephir_is_true(&_1);
+	if (!(_3)) {
+		_3 = !(zephir_is_numeric(&value));
 	}
-	if (_4) {
+	if (_3) {
 		ZEPHIR_CALL_METHOD(&label, this_ptr, "preparelabel", NULL, 0, validation, &field);
 		zephir_check_call_status();
-		ZEPHIR_INIT_VAR(&_5$$3);
-		ZVAL_STRING(&_5$$3, "Numericality");
-		ZEPHIR_CALL_METHOD(&message, this_ptr, "preparemessage", NULL, 0, validation, &field, &_5$$3);
+		ZEPHIR_INIT_VAR(&_4$$3);
+		ZVAL_STRING(&_4$$3, "Numericality");
+		ZEPHIR_CALL_METHOD(&message, this_ptr, "preparemessage", NULL, 0, validation, &field, &_4$$3);
 		zephir_check_call_status();
 		ZEPHIR_CALL_METHOD(&code, this_ptr, "preparecode", NULL, 0, &field);
 		zephir_check_call_status();
 		ZEPHIR_INIT_VAR(&replacePairs);
 		zephir_create_array(&replacePairs, 1, 0 TSRMLS_CC);
 		zephir_array_update_string(&replacePairs, SL(":field"), &label, PH_COPY | PH_SEPARATE);
-		ZEPHIR_INIT_NVAR(&_5$$3);
-		object_init_ex(&_5$$3, phalcon_validation_message_ce);
-		ZEPHIR_CALL_FUNCTION(&_6$$3, "strtr", NULL, 22, &message, &replacePairs);
+		ZEPHIR_INIT_NVAR(&_4$$3);
+		object_init_ex(&_4$$3, phalcon_validation_message_ce);
+		ZEPHIR_CALL_FUNCTION(&_5$$3, "strtr", NULL, 22, &message, &replacePairs);
 		zephir_check_call_status();
-		ZEPHIR_INIT_VAR(&_7$$3);
-		ZVAL_STRING(&_7$$3, "Numericality");
-		ZEPHIR_CALL_METHOD(NULL, &_5$$3, "__construct", NULL, 424, &_6$$3, &field, &_7$$3, &code);
+		ZEPHIR_INIT_VAR(&_6$$3);
+		ZVAL_STRING(&_6$$3, "Numericality");
+		ZEPHIR_CALL_METHOD(NULL, &_4$$3, "__construct", NULL, 425, &_5$$3, &field, &_6$$3, &code);
 		zephir_check_call_status();
-		ZEPHIR_CALL_METHOD(NULL, validation, "appendmessage", NULL, 0, &_5$$3);
+		ZEPHIR_CALL_METHOD(NULL, validation, "appendmessage", NULL, 0, &_4$$3);
 		zephir_check_call_status();
 		RETURN_MM_BOOL(0);
 	}

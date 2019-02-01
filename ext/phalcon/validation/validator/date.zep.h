@@ -6,24 +6,12 @@ ZEPHIR_INIT_CLASS(Phalcon_Validation_Validator_Date);
 PHP_METHOD(Phalcon_Validation_Validator_Date, validate);
 PHP_METHOD(Phalcon_Validation_Validator_Date, checkDate);
 
-#if PHP_VERSION_ID >= 70200
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_phalcon_validation_validator_date_validate, 0, 2, _IS_BOOL, 0)
-#else
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_phalcon_validation_validator_date_validate, 0, 2, _IS_BOOL, NULL, 0)
-#endif
+ZEND_BEGIN_ARG_INFO_EX(arginfo_phalcon_validation_validator_date_validate, 0, 0, 2)
 	ZEND_ARG_OBJ_INFO(0, validation, Phalcon\\Validation, 0)
-#if PHP_VERSION_ID >= 70200
-	ZEND_ARG_TYPE_INFO(0, field, IS_STRING, 0)
-#else
 	ZEND_ARG_INFO(0, field)
-#endif
 ZEND_END_ARG_INFO()
 
-#if PHP_VERSION_ID >= 70200
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_phalcon_validation_validator_date_checkdate, 0, 2, _IS_BOOL, 0)
-#else
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_phalcon_validation_validator_date_checkdate, 0, 2, _IS_BOOL, NULL, 0)
-#endif
+ZEND_BEGIN_ARG_INFO_EX(arginfo_phalcon_validation_validator_date_checkdate, 0, 0, 2)
 	ZEND_ARG_INFO(0, value)
 	ZEND_ARG_INFO(0, format)
 ZEND_END_ARG_INFO()

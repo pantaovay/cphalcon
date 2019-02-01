@@ -79,7 +79,7 @@ PHP_METHOD(Phalcon_Di_Service, __construct) {
 	zephir_fetch_params(1, 2, 1, &name_param, &definition, &shared_param);
 
 	if (UNEXPECTED(Z_TYPE_P(name_param) != IS_STRING && Z_TYPE_P(name_param) != IS_NULL)) {
-		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'name' must be of the type string") TSRMLS_CC);
+		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'name' must be a string") TSRMLS_CC);
 		RETURN_MM_NULL();
 	}
 	if (EXPECTED(Z_TYPE_P(name_param) == IS_STRING)) {
@@ -315,7 +315,7 @@ PHP_METHOD(Phalcon_Di_Service, resolve) {
 					ZEPHIR_CALL_METHOD(NULL, &builder, "__construct", NULL, 0);
 					zephir_check_call_status();
 				}
-				ZEPHIR_CALL_METHOD(&instance, &builder, "build", NULL, 174, dependencyInjector, &definition, parameters);
+				ZEPHIR_CALL_METHOD(&instance, &builder, "build", NULL, 175, dependencyInjector, &definition, parameters);
 				zephir_check_call_status();
 			} else {
 				found = 0;
@@ -473,7 +473,7 @@ PHP_METHOD(Phalcon_Di_Service, __set_state) {
 		return;
 	}
 	object_init_ex(return_value, phalcon_di_service_ce);
-	ZEPHIR_CALL_METHOD(NULL, return_value, "__construct", NULL, 63, &name, &definition, &shared);
+	ZEPHIR_CALL_METHOD(NULL, return_value, "__construct", NULL, 64, &name, &definition, &shared);
 	zephir_check_call_status();
 	RETURN_MM();
 

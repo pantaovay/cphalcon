@@ -111,7 +111,7 @@ PHP_METHOD(Phalcon_Mvc_Model_MetaData_Apc, read) {
 	zephir_fetch_params(1, 1, 0, &key_param);
 
 	if (UNEXPECTED(Z_TYPE_P(key_param) != IS_STRING && Z_TYPE_P(key_param) != IS_NULL)) {
-		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'key' must be of the type string") TSRMLS_CC);
+		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'key' must be a string") TSRMLS_CC);
 		RETURN_MM_NULL();
 	}
 	if (EXPECTED(Z_TYPE_P(key_param) == IS_STRING)) {
@@ -125,7 +125,7 @@ PHP_METHOD(Phalcon_Mvc_Model_MetaData_Apc, read) {
 	zephir_read_property(&_0, this_ptr, SL("_prefix"), PH_NOISY_CC | PH_READONLY);
 	ZEPHIR_INIT_VAR(&_1);
 	ZEPHIR_CONCAT_SVV(&_1, "$PMM$", &_0, &key);
-	ZEPHIR_CALL_FUNCTION(&data, "apc_fetch", NULL, 81, &_1);
+	ZEPHIR_CALL_FUNCTION(&data, "apc_fetch", NULL, 82, &_1);
 	zephir_check_call_status();
 	if (Z_TYPE_P(&data) == IS_ARRAY) {
 		RETURN_CCTOR(&data);
@@ -154,7 +154,7 @@ PHP_METHOD(Phalcon_Mvc_Model_MetaData_Apc, write) {
 	zephir_fetch_params(1, 2, 0, &key_param, &data);
 
 	if (UNEXPECTED(Z_TYPE_P(key_param) != IS_STRING && Z_TYPE_P(key_param) != IS_NULL)) {
-		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'key' must be of the type string") TSRMLS_CC);
+		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'key' must be a string") TSRMLS_CC);
 		RETURN_MM_NULL();
 	}
 	if (EXPECTED(Z_TYPE_P(key_param) == IS_STRING)) {
@@ -169,7 +169,7 @@ PHP_METHOD(Phalcon_Mvc_Model_MetaData_Apc, write) {
 	ZEPHIR_INIT_VAR(&_1);
 	ZEPHIR_CONCAT_SVV(&_1, "$PMM$", &_0, &key);
 	zephir_read_property(&_2, this_ptr, SL("_ttl"), PH_NOISY_CC | PH_READONLY);
-	ZEPHIR_CALL_FUNCTION(NULL, "apc_store", NULL, 82, &_1, data, &_2);
+	ZEPHIR_CALL_FUNCTION(NULL, "apc_store", NULL, 83, &_1, data, &_2);
 	zephir_check_call_status();
 	ZEPHIR_MM_RESTORE();
 

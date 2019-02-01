@@ -624,7 +624,7 @@ PHP_METHOD(Phalcon_Dispatcher, setModelBinding) {
 	if (value) {
 		ZEPHIR_INIT_VAR(&_1$$4);
 		object_init_ex(&_1$$4, phalcon_mvc_model_binder_ce);
-		ZEPHIR_CALL_METHOD(NULL, &_1$$4, "__construct", NULL, 67, cache);
+		ZEPHIR_CALL_METHOD(NULL, &_1$$4, "__construct", NULL, 68, cache);
 		zephir_check_call_status();
 		zephir_update_property_zval(this_ptr, SL("_modelBinder"), &_1$$4);
 	}

@@ -61,7 +61,7 @@ PHP_METHOD(Phalcon_Annotations_Adapter_Xcache, read) {
 	zephir_fetch_params(1, 1, 0, &key_param);
 
 	if (UNEXPECTED(Z_TYPE_P(key_param) != IS_STRING && Z_TYPE_P(key_param) != IS_NULL)) {
-		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'key' must be of the type string") TSRMLS_CC);
+		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'key' must be a string") TSRMLS_CC);
 		RETURN_MM_NULL();
 	}
 	if (EXPECTED(Z_TYPE_P(key_param) == IS_STRING)) {
@@ -76,10 +76,10 @@ PHP_METHOD(Phalcon_Annotations_Adapter_Xcache, read) {
 	ZEPHIR_INIT_VAR(&_1);
 	ZEPHIR_CONCAT_SV(&_1, "_PHAN", &key);
 	zephir_fast_strtolower(&_0, &_1);
-	ZEPHIR_CALL_FUNCTION(&serialized, "xcache_get", NULL, 83, &_0);
+	ZEPHIR_CALL_FUNCTION(&serialized, "xcache_get", NULL, 84, &_0);
 	zephir_check_call_status();
 	if (Z_TYPE_P(&serialized) == IS_STRING) {
-		ZEPHIR_CALL_FUNCTION(&data, "unserialize", NULL, 62, &serialized);
+		ZEPHIR_CALL_FUNCTION(&data, "unserialize", NULL, 63, &serialized);
 		zephir_check_call_status();
 		if (Z_TYPE_P(&data) == IS_OBJECT) {
 			RETURN_CCTOR(&data);
@@ -109,7 +109,7 @@ PHP_METHOD(Phalcon_Annotations_Adapter_Xcache, write) {
 	zephir_fetch_params(1, 2, 0, &key_param, &data);
 
 	if (UNEXPECTED(Z_TYPE_P(key_param) != IS_STRING && Z_TYPE_P(key_param) != IS_NULL)) {
-		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'key' must be of the type string") TSRMLS_CC);
+		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'key' must be a string") TSRMLS_CC);
 		RETURN_MM_NULL();
 	}
 	if (EXPECTED(Z_TYPE_P(key_param) == IS_STRING)) {
@@ -124,9 +124,9 @@ PHP_METHOD(Phalcon_Annotations_Adapter_Xcache, write) {
 	ZEPHIR_INIT_VAR(&_1);
 	ZEPHIR_CONCAT_SV(&_1, "_PHAN", &key);
 	zephir_fast_strtolower(&_0, &_1);
-	ZEPHIR_CALL_FUNCTION(&_2, "serialize", NULL, 61, data);
+	ZEPHIR_CALL_FUNCTION(&_2, "serialize", NULL, 62, data);
 	zephir_check_call_status();
-	ZEPHIR_CALL_FUNCTION(NULL, "xcache_set", NULL, 84, &_0, &_2);
+	ZEPHIR_CALL_FUNCTION(NULL, "xcache_set", NULL, 85, &_0, &_2);
 	zephir_check_call_status();
 	ZEPHIR_MM_RESTORE();
 
