@@ -8,7 +8,11 @@ ZEND_BEGIN_ARG_INFO_EX(arginfo_phalcon_mvc_model_queryinterface_cache, 0, 0, 1)
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_phalcon_mvc_model_queryinterface_setuniquerow, 0, 0, 1)
+#if PHP_VERSION_ID >= 70200
+	ZEND_ARG_TYPE_INFO(0, uniqueRow, _IS_BOOL, 0)
+#else
 	ZEND_ARG_INFO(0, uniqueRow)
+#endif
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_phalcon_mvc_model_queryinterface_execute, 0, 0, 0)

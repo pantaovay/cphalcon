@@ -56,24 +56,27 @@ PHP_METHOD(Phalcon_Mvc_Model_Query_Lang, parsePHQL) {
 
 	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *phql_param = NULL;
-	zval *phql = NULL;
+	zval phql;
+	zval *this_ptr = getThis();
+
+	ZVAL_UNDEF(&phql);
 
 	ZEPHIR_MM_GROW();
 	zephir_fetch_params(1, 1, 0, &phql_param);
 
 	if (UNEXPECTED(Z_TYPE_P(phql_param) != IS_STRING && Z_TYPE_P(phql_param) != IS_NULL)) {
-		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'phql' must be a string") TSRMLS_CC);
+		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'phql' must be of the type string") TSRMLS_CC);
 		RETURN_MM_NULL();
 	}
 	if (EXPECTED(Z_TYPE_P(phql_param) == IS_STRING)) {
-		zephir_get_strval(phql, phql_param);
+		zephir_get_strval(&phql, phql_param);
 	} else {
-		ZEPHIR_INIT_VAR(phql);
-		ZVAL_EMPTY_STRING(phql);
+		ZEPHIR_INIT_VAR(&phql);
+		ZVAL_EMPTY_STRING(&phql);
 	}
 
 
-	ZEPHIR_LAST_CALL_STATUS = phql_parse_phql(return_value, phql TSRMLS_CC);
+	ZEPHIR_LAST_CALL_STATUS = phql_parse_phql(return_value, &phql TSRMLS_CC);
 	zephir_check_call_status();
 	RETURN_MM();
 

@@ -3,7 +3,11 @@ extern zend_class_entry *phalcon_db_referenceinterface_ce;
 
 ZEPHIR_INIT_CLASS(Phalcon_Db_ReferenceInterface);
 
-ZEND_BEGIN_ARG_INFO_EX(arginfo_phalcon_db_referenceinterface___set_state, 0, 0, 1)
+#if PHP_VERSION_ID >= 70200
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_phalcon_db_referenceinterface___set_state, 0, 1, Phalcon\\Db\\ReferenceInterface, 0)
+#else
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_phalcon_db_referenceinterface___set_state, 0, 1, IS_OBJECT, "Phalcon\\Db\\ReferenceInterface", 0)
+#endif
 	ZEND_ARG_ARRAY_INFO(0, data, 0)
 ZEND_END_ARG_INFO()
 

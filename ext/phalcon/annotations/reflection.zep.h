@@ -14,7 +14,11 @@ ZEND_BEGIN_ARG_INFO_EX(arginfo_phalcon_annotations_reflection___construct, 0, 0,
 	ZEND_ARG_INFO(0, reflectionData)
 ZEND_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_INFO_EX(arginfo_phalcon_annotations_reflection___set_state, 0, 0, 1)
+#if PHP_VERSION_ID >= 70200
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_phalcon_annotations_reflection___set_state, 0, 1, Phalcon\\Annotations\\Reflection, 0)
+#else
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_phalcon_annotations_reflection___set_state, 0, 1, IS_OBJECT, "Phalcon\\Annotations\\Reflection", 0)
+#endif
 	ZEND_ARG_INFO(0, data)
 ZEND_END_ARG_INFO()
 

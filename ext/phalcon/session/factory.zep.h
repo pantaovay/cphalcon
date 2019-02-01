@@ -5,7 +5,11 @@ ZEPHIR_INIT_CLASS(Phalcon_Session_Factory);
 
 PHP_METHOD(Phalcon_Session_Factory, load);
 
-ZEND_BEGIN_ARG_INFO_EX(arginfo_phalcon_session_factory_load, 0, 0, 1)
+#if PHP_VERSION_ID >= 70200
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_phalcon_session_factory_load, 0, 1, Phalcon\\Session\\AdapterInterface, 0)
+#else
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_phalcon_session_factory_load, 0, 1, IS_OBJECT, "Phalcon\\Session\\AdapterInterface", 0)
+#endif
 	ZEND_ARG_INFO(0, config)
 ZEND_END_ARG_INFO()
 

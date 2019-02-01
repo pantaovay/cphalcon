@@ -38,24 +38,27 @@ ZEPHIR_INIT_CLASS(Phalcon_Assets_Filters_None) {
 PHP_METHOD(Phalcon_Assets_Filters_None, filter) {
 
 	zval *content_param = NULL;
-	zval *content = NULL;
+	zval content;
+	zval *this_ptr = getThis();
+
+	ZVAL_UNDEF(&content);
 
 	ZEPHIR_MM_GROW();
 	zephir_fetch_params(1, 1, 0, &content_param);
 
 	if (UNEXPECTED(Z_TYPE_P(content_param) != IS_STRING && Z_TYPE_P(content_param) != IS_NULL)) {
-		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'content' must be a string") TSRMLS_CC);
+		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'content' must be of the type string") TSRMLS_CC);
 		RETURN_MM_NULL();
 	}
 	if (EXPECTED(Z_TYPE_P(content_param) == IS_STRING)) {
-		zephir_get_strval(content, content_param);
+		zephir_get_strval(&content, content_param);
 	} else {
-		ZEPHIR_INIT_VAR(content);
-		ZVAL_EMPTY_STRING(content);
+		ZEPHIR_INIT_VAR(&content);
+		ZVAL_EMPTY_STRING(&content);
 	}
 
 
-	RETURN_CTOR(content);
+	RETURN_CTOR(&content);
 
 }
 
