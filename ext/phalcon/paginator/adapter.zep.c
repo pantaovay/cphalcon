@@ -44,7 +44,8 @@ ZEPHIR_INIT_CLASS(Phalcon_Paginator_Adapter) {
  */
 PHP_METHOD(Phalcon_Paginator_Adapter, getLimit) {
 
-	
+	zval *this_ptr = getThis();
+
 
 	RETURN_MEMBER(getThis(), "_limitRows");
 
@@ -55,8 +56,11 @@ PHP_METHOD(Phalcon_Paginator_Adapter, getLimit) {
  */
 PHP_METHOD(Phalcon_Paginator_Adapter, setCurrentPage) {
 
-	zval *page_param = NULL, *_0;
+	zval *page_param = NULL, _0;
 	zend_long page;
+	zval *this_ptr = getThis();
+
+	ZVAL_UNDEF(&_0);
 
 	zephir_fetch_params(0, 1, 0, &page_param);
 
@@ -64,8 +68,8 @@ PHP_METHOD(Phalcon_Paginator_Adapter, setCurrentPage) {
 
 
 	ZEPHIR_INIT_ZVAL_NREF(_0);
-	ZVAL_LONG(_0, page);
-	zephir_update_property_this(getThis(), SL("_page"), _0 TSRMLS_CC);
+	ZVAL_LONG(&_0, page);
+	zephir_update_property_zval(this_ptr, SL("_page"), &_0);
 	RETURN_THISW();
 
 }
@@ -75,8 +79,11 @@ PHP_METHOD(Phalcon_Paginator_Adapter, setCurrentPage) {
  */
 PHP_METHOD(Phalcon_Paginator_Adapter, setLimit) {
 
-	zval *limitRows_param = NULL, *_0;
+	zval *limitRows_param = NULL, _0;
 	zend_long limitRows;
+	zval *this_ptr = getThis();
+
+	ZVAL_UNDEF(&_0);
 
 	zephir_fetch_params(0, 1, 0, &limitRows_param);
 
@@ -84,8 +91,8 @@ PHP_METHOD(Phalcon_Paginator_Adapter, setLimit) {
 
 
 	ZEPHIR_INIT_ZVAL_NREF(_0);
-	ZVAL_LONG(_0, limitRows);
-	zephir_update_property_this(getThis(), SL("_limitRows"), _0 TSRMLS_CC);
+	ZVAL_LONG(&_0, limitRows);
+	zephir_update_property_zval(this_ptr, SL("_limitRows"), &_0);
 	RETURN_THISW();
 
 }
